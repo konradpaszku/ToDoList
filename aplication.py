@@ -6,15 +6,25 @@ class ToDoList:
         self.zadania = []
 
     def print(self):
+        print(30 * '-')
         if len(self.zadania) > 0:
             for index, exercise in enumerate(self.zadania):
                 print(f'[{index}] --> {exercise}')
         else:
             print('Twoja lista jest pusta.')
 
+    def print_for_file(self):
+        if len(self.zadania) > 0:
+            for index, exercise in enumerate(self.zadania):
+                return f'[{index}] --> {exercise}'
+        else:
+            return f'Twoja lista jest pusta.'
+
     def add(self):
         quest = input('Podaj swoje zadanie do zrobienia ')
-        self.zadania.append(Exercise(quest))
+        zadanie = Exercise(quest)
+        self.zadania.append(zadanie)
+        self.print()
 
     def get_index(self):
         flag = True
@@ -29,7 +39,9 @@ class ToDoList:
     def delete(self):
         index = self.get_index()
         del self.zadania[index]
+        self.print()
 
     def change_for_made(self):
         index = self.get_index()
         self.zadania[index].change_for_made()
+        self.print()

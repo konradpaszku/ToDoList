@@ -1,11 +1,10 @@
 from aplication import ToDoList
+
 app = ToDoList()
 flag = True
+app.print()
 while flag:
     print('Witaj w to do liście')
-    print(30 * '-')
-    app.print()
-    print(30 * '-')
     print('Wybierz opcję co byś chciał teraz zrobić?')
     print('Dodaj zadanie -> "a"')
     print('Oznacz zadanie jako zrobione -> "m"')
@@ -22,8 +21,8 @@ while flag:
         print(30 * '-')
         print('Do zobaczenia!')
         flag = False
+        f = open("todolist.txt", "w")
+        f.write(app.print_for_file())
+        f.close()
     else:
         print('Nie rozumiem')
-
-
-
